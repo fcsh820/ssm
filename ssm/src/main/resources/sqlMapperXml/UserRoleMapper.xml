@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.ssm.mapper.UserRoleMapper">
+
+    <!-- Result Map-->
+    <resultMap id="BaseResultMap" type="com.demo.ssm.po.UserRole" >
+        <id column="user_id" property="userId" jdbcType="VARCHAR" />
+        <id column="role_id" property="roleId" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--  新增记录  -->
+    <insert id="add" parameterType="com.demo.ssm.po.User">
+        INSERT INTO t_user_role(user_id,role_id)
+        VALUES (#{userId},#{roleId});
+    </insert>
+
+    <!--  删除记录  -->
+    <delete id="deleteByUserId" parameterType="java.lang.String">
+        delete from t_user_role where user_id = #{userId}
+    </delete>
+
+    <!--  批量删除  -->
+    <delete id="deleteByUserIds" parameterType="java.lang.String">
+        delete from t_user_role where user_id IN
+        <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+</mapper>

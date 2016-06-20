@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.ssm.mapper.ResourceMapper">
+    <!--  新增记录  -->
+    <insert id="add" parameterType="com.demo.ssm.po.Resource">
+        INSERT INTO t_resource(id,`no`,pno,`name`,url,`type`,note,create_time)
+        VALUES (#{id},#{no},#{pno},#{name},#{url},#{type},#{note},#{create_time});
+    </insert>
+    <!--  修改记录  -->
+    <update id="update" parameterType="com.demo.ssm.po.Resource">
+        UPDATE t_resource SET `no` = #{no},pno = #{pno},`name` = #{name},url = #{url},`type` = #{type},note = #{note},create_time = #{create_time}
+        WHERE id = #{id};
+    </update>
+    <!--  删除记录  -->
+    <delete id="delete" parameterType="java.lang.String">
+        DELETE FROM t_resource WHERE `no` like concat(#{no},'%')
+    </delete>
+    <!--  查询pno  -->
+    <select id="selectPno" parameterType="java.lang.String" resultType="java.lang.String">
+        SELECT no FROM t_resource
+        WHERE #{no} LIKE concat(no,'%') AND `no` <![CDATA[<>]]> #{no}
+        ORDER BY no DESC limit 0,1
+    </select>
+    <!--  查询单条记录  -->
+    <select id="selectById" parameterType="java.lang.String" resultType="com.demo.ssm.po.Resource">
+        SELECT * FROM t_resource where id = #{id}
+    </select>
+    <!--  查询单条记录  -->
+    <select id="selectByNo" parameterType="java.lang.String" resultType="com.demo.ssm.po.Resource">
+        SELECT * FROM t_resource where no = #{no}
+    </select>
+    <!--  查询所有记录  -->
+    <select id="selectAll" resultType="com.demo.ssm.po.Resource">
+        SELECT * FROM t_resource
+    </select>
+    <!-- 根据角色id查询所有资源和选择状态 -->
+    <select id="selectAllAndCheckedByRoleId" resultType="com.demo.ssm.vo.Tree">
+        SELECT a.id,a.no,a.pno,a.name text,!ISNULL(b.`role_id`) checked FROM t_resource a
+        LEFT JOIN t_role_resource b on a.id=b.resource_id and b.role_id = #{role_id}
+    </select>
+</mapper>

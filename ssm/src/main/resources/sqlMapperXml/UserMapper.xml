@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.ssm.mapper.UserMapper">
+
+    <!-- Result Map-->
+    <resultMap id="BaseResultMap" type="com.demo.ssm.po.User" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="uname" property="uname" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="orgno" property="orgno" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="note" property="note" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <resultMap id="UserVoResultMap" type="com.demo.ssm.vo.UserVo" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="uname" property="uname" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="orgno" property="orgno" jdbcType="VARCHAR" />
+        <result column="orgname" property="orgname" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="note" property="note" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <collection property="roles" ofType="Role">
+            <id column="role_id" property="id"/>
+            <result column="role_name" property="name"/>
+        </collection>
+    </resultMap>
+
+    <!-- condition -->
+    <sql id="Example_Where_Clause">
+        <where>
+            <if test="condition != null">
+                <if test="condition.uname!=null and condition.uname!=''">
+                    and u.uname = #{condition.uname}
+                </if>
+            </if>
+        </where>
+    </sql>
+
+    <!--  新增记录  -->
+    <insert id="insert" parameterType="com.demo.ssm.po.User">
+        INSERT INTO t_user(id,uname,`name`,orgno,pwd,salt,sex,birthday,note,status,create_time)
+        VALUES (#{id},#{uname},#{name},#{orgno},#{pwd},#{salt},#{sex},#{birthday},#{note},#{status},now());
+    </insert>
+    <!--  修改记录  -->
+    <update id="update" parameterType="com.demo.ssm.po.User">
+        UPDATE t_user SET id = #{id},uname = #{uname},`name` = #{name},sex = #{sex},
+          birthday = #{birthday},note = #{note},status = #{status}
+        WHERE id = #{id};
+    </update>
+    <!--  删除记录  -->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from t_user where id = #{id}
+    </delete>
+    <delete id="deleteByIds">
+        delete from t_user where id IN
+        <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    <!--  查询单条记录  -->
+    <select id="find" parameterType="java.lang.String" resultType="com.demo.ssm.po.User">
+        select * from t_user where id = #{id}
+    </select>
+    <!--  查询所有记录  -->
+    <select id="findAll" resultType="com.demo.ssm.po.User">
+        select * from t_user
+    </select>
+
+    <select id="findPage" resultMap="UserVoResultMap" parameterType="com.demo.ssm.util.PageInfo">
+        SELECT
+            u.id,
+            u.uname,
+            u.name,
+            u.orgno,
+            u.sex,
+            u.birthday,
+            u.note,
+            u.status,
+            u.create_time,
+            r.id role_id,
+            r.name role_name,
+            o.name orgname
+        FROM t_user u
+            LEFT JOIN t_user_role ur on u.id=ur.user_id
+            LEFT JOIN t_role r on ur.role_id=r.id
+            LEFT JOIN t_organization o on u.orgno=o.no
+        <include refid="Example_Where_Clause"/>
+        LIMIT #{from},#{size}
+    </select>
+
+    <select id="findPageTotal" resultType="java.lang.Integer" parameterType="com.demo.ssm.util.PageInfo">
+        SELECT count(*) FROM t_user u
+        <include refid="Example_Where_Clause"/>
+    </select>
+
+</mapper>

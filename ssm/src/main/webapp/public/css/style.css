@@ -1,0 +1,286 @@
+* {
+    font-size:12px;
+}
+p,ul,li,div {
+    margin:0;
+    padding:0;
+}
+ol,ul{list-style:none;}
+img{border:0;}
+input[readonly]{ background-color:#eee; }
+label{cursor:pointer;}
+input[type=checkbox],input[type=radio]{ vertical-align: -3px;  }
+form table tr td label { margin-right:10px; }
+
+/* 修改easyui panel的背景色 */
+.panel-body {background-color:#f6f7f9;}
+
+/*head*/
+.cs-north-bg {
+    width: 100%;
+    height: 55px;
+    background: url(../images/header_bg.png) repeat-x;
+}
+
+.cs-north-logo {
+    height: 55px;
+    width: 353px;
+    margin: 0;
+    color: #000000;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    background: url(../images/logo.jpg) no-repeat;
+}
+
+.cs-north-title {
+    font-family:'Microsoft YaHei';
+    font-size:24px;
+    color:white;
+    font-weight:bold;
+    position:absolute;
+    top:10px;
+    left:90px;
+}
+
+.cs-north-btn {
+    position:absolute;
+    right:0;
+    bottom:5px;
+    color:white;
+}
+
+#loading {
+    display:none;position:fixed; width: 110px; margin-left: -55px; left: 50%; top: 0; color: #000; background: url(../images/loading.gif) no-repeat 5px 5px #ffebbf;border: 1px #FFB951 solid; z-index: 99; padding: 7px 0; text-align: left; border-radius: 3px; font-size: 12px; text-indent:27px;
+}
+/* 修改easyui样式 */
+.cs-north-btn .l-btn {
+    color:white;
+}
+.cs-north-btn .l-btn-plain:hover {
+    color: #000000;
+}
+/*******************/
+
+.ui-lnk-nav {
+    float: right;
+    padding: 0;
+    list-style: none outside none;
+    margin-top: -25px;
+}
+
+.ui-lnk-nav li {
+    float: left;
+    font-size: 12px;
+    color: #FFFFFF;
+    margin-right: 10px;
+}
+
+.ui-lnk-nav a:link {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.ui-lnk-nav a:visited {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.ui-lnk-nav a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.ui-lnk-nav a:active {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+/********编辑表格******************/
+.tbform {
+    border-collapse: collapse;
+    overflow: hidden;
+}
+.tbform th {
+    text-align: right;
+    border-bottom: 1px dotted #ccc;
+    padding: 5px;
+}
+
+.tbform td {
+    text-align: left;
+    border-bottom: 1px dotted #ccc;
+    padding: 5px;
+}
+/********详情表格******************/
+.tbview {
+    width:100%;
+    table-layout: fixed;
+    border: 1px solid #dddddd;
+    border-collapse: separate;
+    border-left: 0;
+    border-top: 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    table-layout: fixed;
+    border-spacing: 0;
+}
+.tbview th {
+    background-color: #f1f6ff;
+    width:120px;
+    font-weight:500;
+}
+.tbview th, .tbview td {
+    border-left: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+    padding: 8px;
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* 上传表格样式 */
+.mytable {
+    padding: 0;
+    margin: 0;
+}
+.mytable th {
+    font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    color: #4f6b72;
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    border-top: 1px solid #C1DAD7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 6px 6px 6px 12px;
+}
+.mytable td {
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    background: #fff;
+    font-size:11px;
+    padding: 3px 3px 3px 6px;
+    color: #4f6b72;
+}
+/* 提示栏 */
+.notice-tip {
+    padding: 5px 3px 5px 20px;
+    border: dashed 1px #f8cc7e;
+    background: #fffce7 url(../images/icon/tip.png) no-repeat 3px 3px;
+}
+.notice-tip h3{color:blue;margin:0 0 3px 0;padding:0;font-size:12px;}
+.notice-tip ul li{margin-left:0;line-height:16px;}
+/* 提示栏2 */
+.tip {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-left-width: 5px;
+    border-radius: 3px;
+    border-left-color: #1b809e;
+}
+.tip h3{color:#1b809e;margin:0 0 5px 0;padding:0;font-size:13px;}
+.tip ul li{margin-left:15px;line-height:16px;color:#777;}
+/* 后台首页 */
+.container { }
+.location { height:30px; line-height:30px; color:#666666; border-bottom:1px solid #CCCCCC;margin-bottom:10px;}
+.box {margin:0px auto; padding:0px; width:100%; min-height:65px; height:auto; border: 1px solid #CCCCCC;margin-bottom:10px;}
+.box-title { height:27px; line-height:27px; text-indent:7px; background:url(../images/box-title.gif) repeat-x; }
+.box-content { height:auto; padding:7px; line-height:20px;}
+
+/* 页面上的导航 */
+.pg-nav {
+    width:568px;
+    overflow: hidden;
+    margin: 10px auto;
+}
+.pg-nav h3 {
+    width: 19%;
+    float: left;
+    font-size: 25px;
+    border-right: 1px solid #ebca8d;
+    background: #fd9002;
+    text-shadow: 3px 3px 3px #ccc;
+    height: 100%;
+    text-align: center;
+    color: #3c2803;
+    font-family: '微软雅黑';
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 300px;
+}
+.pg-nav ul {
+}
+.pg-nav li {
+    float: left;
+    text-align: center;
+    padding: 10px 15px;
+}
+.pg-nav li a {
+    color: #000;
+    display: block;
+    font-family: "微软雅黑","宋体";
+    border: 2px solid #f6f7f9;
+    padding: 2px 4px 4px 4px;
+    width:100px;
+    overflow:hidden;
+}
+.pg-nav li a img{
+    width:100px;
+    height:100px;
+    border:0;
+}
+.pg-nav li a:hover {
+    border: 2px solid #fd9002;
+}
+.pg-nav li .pg-nav-name {
+    height: 38px;
+    line-height: 18px;
+    /*width:99px;*/
+    word-wrap:break-word;
+}
+/*datagrid上方的查询*/
+#frmSearch .search-col {
+    width: 33.3%;
+    height: 28px;
+    line-height: 28px;
+    float: left;
+}
+#frmSearch .search-col label {
+    display: block;
+    width: 80px;
+    text-align: left;
+    line-height: 28px;
+    float: left;
+}
+#frmSearch .search-col input {
+    width: 145px;
+    text-align: left;
+    float: left;
+}
+#frmSearch .search-col select {
+    width: 130px;
+    text-align: left;
+    float: left;
+}
+#frmSearch .search-btn {
+    text-align: left;
+    clear: both;
+    height: 32px;
+    line-height: 32px;
+    margin-left:80px;
+}
+
+/* tree tools */
+.tree-tools{
+    padding:3px;margin:1px;border:1px solid #ccc;
+}
+
+/* 上传 */
+.uploadify-button {border-radius: 0;border: 0;}
+.dlg-upload .txt {width: 80px;text-align: center;}
+.dlg-upload p {padding: 5px 0;}
+.dlg-upload .up-prg {height: 55px;overflow: hidden;}
+.dlg-upload .d-upfile {float: right;}
+.uploadify-queue-item {background-color: #ddd8b4;margin: 0;}

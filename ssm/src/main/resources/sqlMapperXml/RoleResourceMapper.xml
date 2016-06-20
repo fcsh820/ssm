@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.ssm.mapper.RoleResourceMapper">
+
+    <!--  新增记录  -->
+    <insert id="add" parameterType="java.util.Map">
+        INSERT INTO t_role_resource(role_id, resource_id) VALUE
+        <foreach collection="resourceIds" index="index" item="item" separator=",">
+            (#{roleId}, #{item})
+        </foreach>
+    </insert>
+    <!--  删除记录  -->
+    <delete id="deleteByRoleId" parameterType="java.lang.String">
+        delete from t_role_resource where role_id = #{roleId}
+    </delete>
+
+</mapper>

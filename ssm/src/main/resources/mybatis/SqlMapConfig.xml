@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 将数据库连接数据抽取到属性文件中方便测试 -->
+    <!-- <properties resource="/WEB-INF/classes/jdbc.properties"></properties> -->
+    
+    <!-- 全局setting配置，根据需要添加 -->
+
+    <!-- 配置别名 -->
+    <typeAliases>
+        <!-- 批量定义别名 ，指定包名，自动扫描包中的类，别名即为类名，首字母大小写无所谓-->
+        <package name="com.demo.ssm.po"/>
+        <!--<package name="其它包"/>-->
+    </typeAliases>
+
+    <!-- 配置mapper
+     必须遵循：mapper.xml和mapper.java文件同名且在一个目录，不需要配置这里。
+     -->
+    <mappers>
+        <!-- 通过classpath相对路径进行指定 -->
+        <mapper resource="sqlMapperXml/OrganizationMapper.xml"/>
+        <mapper resource="sqlMapperXml/ResourceMapper.xml"/>
+        <mapper resource="sqlMapperXml/RoleMapper.xml"/>
+        <mapper resource="sqlMapperXml/RoleResourceMapper.xml"/>
+        <mapper resource="sqlMapperXml/UserMapper.xml"/>
+        <mapper resource="sqlMapperXml/UserRoleMapper.xml"/>
+        <mapper resource="sqlMapperXml/DicTypeMapper.xml"/>
+        <mapper resource="sqlMapperXml/DicDataMapper.xml"/>
+    </mappers>
+
+</configuration>

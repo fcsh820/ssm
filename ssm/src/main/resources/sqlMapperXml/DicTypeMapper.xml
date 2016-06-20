@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.ssm.mapper.DicTypeMapper">
+
+    <!-- Result Map-->
+    <resultMap id="BaseResultMap" type="com.demo.ssm.po.DicType" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="pid" property="pid" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="code" property="code" jdbcType="VARCHAR" />
+        <result column="seq" property="seq" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+    </resultMap>
+
+    <!-- 查询单条记录 -->
+    <select id="findByCode" resultMap="BaseResultMap">
+        SELECT * FROM t_dic_type WHERE code=#{code} and status=1
+    </select>
+
+    <!--  查询所有记录  -->
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from t_dic_type where status=1
+    </select>
+
+</mapper>

@@ -1,0 +1,16 @@
+log4j.properties 增加配置如下：
+
+###显示SQL语句部分
+log4j.logger.com.mybatis=DEBUG
+log4j.logger.com.mybatis.common.jdbc.SimpleDataSource=DEBUG
+log4j.logger.com.mybatis.common.jdbc.ScriptRunner=DEBUG
+log4j.logger.com.mybatis.sqlmap.engine.impl.SqlMapClientDelegate=DEBUG
+log4j.logger.java.sql.Connection=DEBUG
+log4j.logger.java.sql.Statement=DEBUG
+log4j.logger.java.sql.PreparedStatement=DEBUG
+
+SqlMapConfig.xml 增加配置如下（开头位置）：
+
+<settings>
+    <setting name="logImpl" value="LOG4J"/>
+</settings>
